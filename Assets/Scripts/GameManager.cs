@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator WaitElectrat()
     {
         yield return new WaitForSeconds(0.2f);
-        GameSession.Instance.Buz++;
+        GameSession.Instance.Electrat++;
         UICanvas.CardElectObjDisable();
         //isBuz = true;
         _electObj.SetActive(false);
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         GameSession.Instance.Thermalite++;
         UICanvas.CardThermaliteObjDisable();
         //isBuz = true;
-        _electObj.SetActive(false);
+        _TherObj.SetActive(false);
     }
     public void GetBioUpdate()
     {

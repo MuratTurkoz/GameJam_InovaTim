@@ -37,11 +37,11 @@ public class InteractorTest : MonoBehaviour
             }
             else if (_colliders[0].gameObject.CompareTag("Source"))
             {
-                if (GameManager.isBuz==false)
-                {
                     PlayerCharacterMoveTest.IsMoving = false;
-                    //_colliders[0].GetComponent<SourceCard>().OpenCard();
-                }
+                //if (GameManager.isBuz==false)
+                //{
+                //    //_colliders[0].GetComponent<SourceCard>().OpenCard();
+                //}
              
                 //Debug.Log("Electrat Geldi");
             }
