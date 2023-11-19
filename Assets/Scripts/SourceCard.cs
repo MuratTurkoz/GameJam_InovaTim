@@ -14,6 +14,7 @@ public class SourceCard : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+      
        OpenCard();
     }
     private void OnTriggerExit(Collider other)
