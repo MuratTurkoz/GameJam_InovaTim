@@ -28,6 +28,7 @@ public class PlayerCharacterMoveTest : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
+        audioSource = GetComponent<AudioSource>();
         controller = gameObject.GetComponent<CharacterController>();
     }
 
@@ -53,7 +54,11 @@ public class PlayerCharacterMoveTest : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = mainCamera.ScreenPointToRay(_playerInputTest.GetPointerPosition());
+            if (!audioSource.isPlaying)
+            {
+            audioSource.PlayOneShot(_clip,0.2f);
 
+            }
             if (Physics.Raycast(ray, out hit))
             {
                 IsMoving = true;
@@ -69,7 +74,7 @@ public class PlayerCharacterMoveTest : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = mainCamera.ScreenPointToRay(_playerInputTest.GetPointerPosition());
-
+         
             if (Physics.Raycast(ray, out hit))
             {
                 if (hit.collider.name == "Enemy")
@@ -102,7 +107,7 @@ public class PlayerCharacterMoveTest : MonoBehaviour
             {
                 item.Play();
             }
-            audioSource.PlayOneShot(_clip);
+         
             controller.Move(moveDirection);
             if (moveDirection != Vector3.zero)
             {
@@ -115,6 +120,7 @@ public class PlayerCharacterMoveTest : MonoBehaviour
             {
                 item.Stop();
             }
+            audioSource.Stop();
         }
         
 
