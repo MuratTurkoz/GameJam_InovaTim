@@ -31,7 +31,7 @@ public class MouseLeftTest : MonoBehaviour
 
     private void Update()
     {
-        if (_playerInputTest.GetMouseLeftClickValue())
+        if (_playerInputTest.GetMouseLeftClickValue() &&PlayerCharacterMoveTest.IsInteractable == false)
         {
             RaycastHit hit;
             Ray ray = mainCamera.ScreenPointToRay(_playerInputTest.GetPointerPosition());

@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
         GameSession.Instance.Buz++;
         UICanvas.CardBuzDisable();
         //isBuz = true;
+        PlayerCharacterMoveTest.IsInteractable = false;
         _buzObj.SetActive(false);
     }
     public void GetElectratUpdate()
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
         GameSession.Instance.Electrat++;
         UICanvas.CardElectObjDisable();
         //isBuz = true;
+        PlayerCharacterMoveTest.IsInteractable = false;
         _electObj.SetActive(false);
     }
     public void GetTherObjUpdate()
@@ -45,6 +47,7 @@ public class GameManager : MonoBehaviour
         GameSession.Instance.Thermalite++;
         UICanvas.CardThermaliteObjDisable();
         //isBuz = true;
+        PlayerCharacterMoveTest.IsInteractable = false;
         _TherObj.SetActive(false);
     }
     public void GetBioUpdate()
@@ -57,6 +60,7 @@ public class GameManager : MonoBehaviour
         GameSession.Instance.BioGrow++;
         UICanvas.CardBioObjDisable();
         //isBuz = true;
+        PlayerCharacterMoveTest.IsInteractable = false;
         _BioObj.SetActive(false);
     }
     public void GetDeepUpdate()
@@ -69,6 +73,7 @@ public class GameManager : MonoBehaviour
         GameSession.Instance.DeepCore++;
         UICanvas.CardDeepDisable();
         //isBuz = true;
+        PlayerCharacterMoveTest.IsInteractable = false;
         _DeepObj.SetActive(false);
     }
 }

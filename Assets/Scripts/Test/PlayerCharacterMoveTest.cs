@@ -9,7 +9,8 @@ using UnityEngine.EventSystems;
 public class PlayerCharacterMoveTest : MonoBehaviour
 {
     private CharacterController controller;
-
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip _clip;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     [SerializeField] private float playerSpeed = 2.0f;
@@ -18,8 +19,11 @@ public class PlayerCharacterMoveTest : MonoBehaviour
     private Camera mainCamera;
 
     public static bool IsMoving = true;
+    public static bool IsInteractable = false;
     [SerializeField] private Vector3 targetPosition;
     [SerializeField] private Vector3 moveDirection;
+
+    [SerializeField] private ParticleSystem[] _vfx;
 
     private void Start()
     {
@@ -29,6 +33,7 @@ public class PlayerCharacterMoveTest : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(IsInteractable);
         
         GetMouseLeftClick();
         GetMouseRightClick();
@@ -44,7 +49,7 @@ public class PlayerCharacterMoveTest : MonoBehaviour
 
     private void GetMouseLeftClick()
     {
-        if (_playerInputTest.GetMouseLeftClickValue())
+        if (_playerInputTest.GetMouseLeftClickValue()&&IsInteractable==false)
         {
             RaycastHit hit;
             Ray ray = mainCamera.ScreenPointToRay(_playerInputTest.GetPointerPosition());
@@ -80,7 +85,7 @@ public class PlayerCharacterMoveTest : MonoBehaviour
     }
     private void GetMoved()
     {
-        if (IsMoving==true)
+        if (IsMoving==true && IsInteractable == false)
         {
             moveDirection = targetPosition - transform.position;
             Quaternion.LookRotation(moveDirection.normalized);
@@ -93,10 +98,22 @@ public class PlayerCharacterMoveTest : MonoBehaviour
             }
 
             moveDirection = moveDirection.normalized * playerSpeed * Time.deltaTime;
+            foreach (var item in _vfx)
+            {
+                item.Play();
+            }
+            audioSource.PlayOneShot(_clip);
             controller.Move(moveDirection);
             if (moveDirection != Vector3.zero)
             {
                 gameObject.transform.forward = moveDirection;
+            }
+        }
+        else
+        {
+            foreach (var item in _vfx)
+            {
+                item.Stop();
             }
         }
         

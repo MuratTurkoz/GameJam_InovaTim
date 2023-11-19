@@ -16,6 +16,7 @@ public class SourceCard : MonoBehaviour
     {
       
        OpenCard();
+       PlayerCharacterMoveTest.IsInteractable = true;
     }
     private void OnTriggerExit(Collider other)
     {
