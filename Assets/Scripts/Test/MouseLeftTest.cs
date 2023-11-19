@@ -63,7 +63,7 @@ public class MouseLeftTest : MonoBehaviour
         Vector3 rotDir = new Vector3(0, angle, 0);
         _characterController.transform.rotation = Quaternion.Euler(rotDir);
 
-        Debug.Log(moveDirection.magnitude);
+        //Debug.Log(moveDirection.magnitude);
         if (moveDirection.magnitude < 0.2f)
         {
             isMoving = false;
