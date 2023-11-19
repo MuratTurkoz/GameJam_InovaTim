@@ -13,6 +13,7 @@ public class SourceCard : MonoBehaviour
     [SerializeField] Source _source;
 
 
+
     public void OpenCard()
     {
         _textHeader.text = _source.TextHeader;
