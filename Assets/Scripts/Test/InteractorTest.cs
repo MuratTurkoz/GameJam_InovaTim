@@ -37,8 +37,12 @@ public class InteractorTest : MonoBehaviour
             }
             else if (_colliders[0].gameObject.CompareTag("Source"))
             {
-                PlayerCharacterMoveTest.IsMoving=false;
-                _colliders[0].GetComponent<SourceCard>().OpenCard();
+                if (GameManager.isBuz==false)
+                {
+                    PlayerCharacterMoveTest.IsMoving = false;
+                    //_colliders[0].GetComponent<SourceCard>().OpenCard();
+                }
+             
                 //Debug.Log("Electrat Geldi");
             }
             else
@@ -60,7 +64,7 @@ public class InteractorTest : MonoBehaviour
         }
         else
         {
-                _colliders[0].GetComponent<SourceCard>().CloseCard();
+            //_colliders[0].GetComponent<SourceCard>().CloseCard();
             //animator.SetBool("IsAttack", false);
 
         }

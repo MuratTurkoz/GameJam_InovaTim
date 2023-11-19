@@ -12,6 +12,15 @@ public class SourceCard : MonoBehaviour
     [SerializeField] Image _image;
     [SerializeField] Source _source;
 
+    private void OnTriggerEnter(Collider other)
+    {
+       OpenCard();
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        CloseCard();
+        Debug.Log("Çýktý");
+    }
 
 
     public void OpenCard()
